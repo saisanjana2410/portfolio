@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node --env-file-if-exists=.env server.mjs",
-    "test": "node --test server.test.mjs portfolio-tools.test.mjs agent-loop.test.mjs"
+    "test": "node --test server.test.mjs portfolio-tools.test.mjs agent-loop.test.mjs web-research.test.mjs"
   },
   "engines": {
     "node": ">=22"
