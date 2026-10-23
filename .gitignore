@@ -1,0 +1,8 @@
+.env
+node_modules/
+
+# Local content handoff and unused development assets
+content-source.md
+assets/sanjana-avatar.png
+avatar-motion.js
+*.log

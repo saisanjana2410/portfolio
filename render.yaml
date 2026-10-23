@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sai-sanjana-portfolio
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24.16.0
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
