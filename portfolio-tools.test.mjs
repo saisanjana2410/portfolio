@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {tools,runTool} from './portfolio-tools.mjs';
+const context={projects:[{id:'repopilot',name:'RepoPilot'}],documents:[{id:'about',title:'About',text:'Verified biography'},{id:'repopilot',title:'RepoPilot',text:'Python AST retrieval'}],searchPortfolio:q=>q.toLowerCase().includes('python')?[{id:'repopilot',title:'RepoPilot',text:'Python AST retrieval'}]:[]};
+test('tool schemas require bounded explicit arguments',()=>{assert.equal(tools.length,5);for(const t of tools){assert.equal(t.strict,true);assert.equal(t.parameters.additionalProperties,false);}});
+test('profile, project, skill and navigation tools return grounded records',()=>{assert.equal(runTool('get_profile',{topic:'about'},context).records[0].text,'Verified biography');assert.equal(runTool('get_project',{project_id:'repopilot'},context).project.name,'RepoPilot');assert.equal(runTool('get_project',{project_id:'invented'},context).project,null);const found=runTool('find_skill_evidence',{skills:['Python','unknown']},context);assert.equal(found.matches[1].status,'No supplied evidence');assert.equal(found.records.length,1);assert.equal(runTool('show_portfolio_section',{section_id:'repopilot'},context).action.id,'repopilot');assert.ok(runTool('show_portfolio_section',{section_id:'https://bad.example'},context).error);});

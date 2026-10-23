@@ -1,1 +1,12 @@
-{"name":"sanjana-portfolio","private":true,"type":"module","scripts":{"start":"node --env-file-if-exists=.env server.mjs","test":"node --test server.test.mjs"},"engines":{"node":">=22"}}
+{
+  "name": "sanjana-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test server.test.mjs portfolio-tools.test.mjs agent-loop.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
